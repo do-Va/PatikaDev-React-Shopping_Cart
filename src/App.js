@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import Navbar from './components/Navbar';
+import ShoppingCarts from './components/ShoppingCarts';
+import './sass/App.scss';
+
+import { products } from './data/constants';
 
 function App() {
+  const [totalCount, setTotalCount] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar totalCount={totalCount} />
+      <ShoppingCarts
+        products={products}
+        setTotalCount={setTotalCount}
+        totalCount={totalCount}
+      />
     </div>
   );
 }
